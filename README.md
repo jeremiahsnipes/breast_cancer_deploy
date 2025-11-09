@@ -84,3 +84,12 @@ Users interact with the web interface by adjusting sliders (1–10) that represe
 9. Mitoses  
 
 Each feature is rated from **1 (normal)** to **10 (very abnormal)** based on microscopic analysis.
+
+## 🧪 Local Deployment Verification
+
+Before deploying to Heroku, the application was tested and verified locally in Visual Studio Code using a Python virtual environment.
+
+The screenshot below shows the Flask app running successfully at **http://127.0.0.1:5000/** prior to deployment:
+
+![Local Deployment Screenshot](successfully%20running%20local%20application.png)
+
