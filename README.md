@@ -36,20 +36,15 @@ Users interact with the web interface by adjusting sliders (1–10) that represe
 ---
 ## 🧩 Project Structure
 
-breast_cancer_deploy/
-|
-|-- app.py # Flask web app
-|-- train_and_save_model.py # Model training script
-|-- model.pkl # Trained Logistic Regression model
-|-- breast_cancer_data.csv # Dataset
-|-- templates/
-| |-- index.html # Frontend interface
-|-- requirements.txt # Dependencies
-|-- Procfile # Heroku process file
-`-- .github/workflows/ # (Optional) CI/CD pipeline
-
-yaml
-Copy code
+- **app.py** — Flask web app that serves the model  
+- **train_and_save_model.py** — Script to train and save the Logistic Regression model  
+- **model.pkl** — Trained Logistic Regression model file  
+- **breast_cancer_data.csv** — Dataset used for training  
+- **templates/**
+  - **index.html** — Front-end interface with sliders for user input  
+- **requirements.txt** — Python dependencies  
+- **Procfile** — Defines the Heroku web process  
+- **.github/workflows/** — (Optional) CI/CD automation pipeline  
 
 ---
 
