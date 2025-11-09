@@ -32,13 +32,8 @@ Users interact with the web interface by adjusting sliders (1–10) that represe
 
 3. **Deployment**
    - Hosted on **Heroku** using **Gunicorn** as the production WSGI server  
-   - `Procfile` defines the web process:  
-     ```
-     web: gunicorn app:app
-     ```
-
+   - `Procfile` defines the web process:web: gunicorn app:app
 ---
-
 ## 🧩 Project Structure
 
 breast_cancer_deploy/
