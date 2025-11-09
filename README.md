@@ -18,24 +18,27 @@ Users interact with the web interface by adjusting sliders (1–10) that represe
 ## 🧠 How It Works
 
 1. **Model Training**
-   - Data: Breast Cancer Wisconsin (Original) dataset
-   - Model: Logistic Regression (scikit-learn)
-   - Output: `model.pkl`
-   - Script: [`train_and_save_model.py`](train_and_save_model.py)
+   - Data: Breast Cancer Wisconsin (Original) dataset  
+   - Model: Logistic Regression (scikit-learn)  
+   - Output: `model.pkl`  
+   - Script: `train_and_save_model.py`
 
 2. **Web Application**
    - Flask loads the saved model (`model.pkl`)
-   - Inputs are entered via an HTML form with sliders
+   - Inputs are entered via an HTML interface with sliders
    - The model returns one of two possible results:
      - **Tumor is likely Benign**
      - **Tumor is likely Malignant**
 
 3. **Deployment**
-   - Hosted on **Heroku** using **Gunicorn** as the production WSGI server.
+   - Hosted on **Heroku** using **Gunicorn** as the production WSGI server  
    - `Procfile` defines the web process:  
      ```
      web: gunicorn app:app
      ```
+
+---
+
 ## 🧩 Project Structure
 
 breast_cancer_deploy/
@@ -48,8 +51,10 @@ breast_cancer_deploy/
 │ └── index.html # Frontend interface
 ├── requirements.txt # Dependencies
 ├── Procfile # Heroku process file
-├── successfully running local application.png # Local run screenshot
 └── .github/workflows/ # (Optional) CI/CD pipeline
+
+yaml
+Copy code
 
 ---
 
@@ -64,33 +69,28 @@ breast_cancer_deploy/
 
 ---
 
-## 🌍 Live Application
+## 🌐 Live Application
 
 **Heroku App:**  
-🔗 [https://breast-cancer-deploy-js.herokuapp.com/](https://breast-cancer-deploy-js.herokuapp.com/)  
+🔗 [https://breast-cancer-deploy-js-f16b183e339e.herokuapp.com/](https://breast-cancer-deploy-js-f16b183e339e.herokuapp.com/)  
 
 **GitHub Repository:**  
 🔗 [https://github.com/jeremiahsnipes/breast_cancer_deploy](https://github.com/jeremiahsnipes/breast_cancer_deploy)
 
 ---
 
-## 🧪 Running Locally
+## 🩺 Dataset Description
 
-```bash
-# Clone the repository
-git clone https://github.com/jeremiahsnipes/breast_cancer_deploy.git
-cd breast_cancer_deploy
+**Source:** UCI Machine Learning Repository — *Breast Cancer Wisconsin (Original) Dataset*  
+**Features:**
+1. Clump Thickness  
+2. Uniformity of Cell Size  
+3. Uniformity of Cell Shape  
+4. Marginal Adhesion  
+5. Single Epithelial Cell Size  
+6. Bare Nuclei  
+7. Bland Chromatin  
+8. Normal Nucleoli  
+9. Mitoses  
 
-# Create virtual environment
-python -m venv venv
-venv\Scripts\activate        # (Windows)
-# or
-source venv/bin/activate     # (Mac/Linux)
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the Flask app
-python app.py
-
-
+Each feature is rated from **1 (normal)** to **10 (very abnormal)** based on microscopic analysis.
