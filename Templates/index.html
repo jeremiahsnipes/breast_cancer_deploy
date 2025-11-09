@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breast Cancer Cell Analysis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f6f6;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px;
+    }
+    .container {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px 40px;
+      width: 600px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    p.intro {
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      color: #333;
+      margin-top: 10px;
+      display: block;
+    }
+    .desc {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    input[type="range"] {
+      width: 100%;
+      margin: 6px 0 2px 0;
+    }
+    datalist {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #555;
+      margin-top: -4px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .result {
+      background-color: #f0f4ff;
+      border: 1px solid #007bff;
+      color: #333;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Breast Cancer Predictor</h2>
+    <p class="intro">
+      Each slider represents how abnormal the cells appear under the microscope.<br>
+      Move from <b>1 (normal)</b> to <b>10 (very abnormal)</b>, then click <b>Predict</b>.
+    </p>
+
+    <form action="/predict" method="post">
+
+      <label>Clump Thickness</label>
+      <div class="desc">Density of cell clusters (higher = thicker).</div>
+      <input type="range" name="feature0" min="1" max="10" value="{{ values[0] }}" step="1" list="tickmarks">
+      <datalist id="tickmarks">
+        <option value="1" label="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5" label="5"></option>
+        <option value="6"></option>
+        <option value="7"></option>
+        <option value="8"></option>
+        <option value="9"></option>
+        <option value="10" label="10"></option>
+      </datalist>
+
+      <label>Uniformity of Cell Size</label>
+      <div class="desc">How similar cells are in size (higher = more varied).</div>
+      <input type="range" name="feature1" min="1" max="10" value="{{ values[1] }}" step="1" list="tickmarks">
+
+      <label>Uniformity of Cell Shape</label>
+      <div class="desc">How consistent cell shapes are (higher = irregular).</div>
+      <input type="range" name="feature2" min="1" max="10" value="{{ values[2] }}" step="1" list="tickmarks">
+
+      <label>Marginal Adhesion</label>
+      <div class="desc">How well cells stick together (higher = less adhesion).</div>
+      <input type="range" name="feature3" min="1" max="10" value="{{ values[3] }}" step="1" list="tickmarks">
+
+      <label>Single Epithelial Cell Size</label>
+      <div class="desc">Size of individual cells (higher = larger/abnormal).</div>
+      <input type="range" name="feature4" min="1" max="10" value="{{ values[4] }}" step="1" list="tickmarks">
+
+      <label>Bare Nuclei</label>
+      <div class="desc">Count of exposed nuclei (higher = more likely malignant).</div>
+      <input type="range" name="feature5" min="1" max="10" value="{{ values[5] }}" step="1" list="tickmarks">
+
+      <label>Bland Chromatin</label>
+      <div class="desc">Uniformity of DNA texture (higher = uneven texture).</div>
+      <input type="range" name="feature6" min="1" max="10" value="{{ values[6] }}" step="1" list="tickmarks">
+
+      <label>Normal Nucleoli</label>
+      <div class="desc">Visibility of nucleoli (higher = more pronounced).</div>
+      <input type="range" name="feature7" min="1" max="10" value="{{ values[7] }}" step="1" list="tickmarks">
+
+      <label>Mitoses</label>
+      <div class="desc">Number of dividing cells (higher = faster growth).</div>
+      <input type="range" name="feature8" min="1" max="10" value="{{ values[8] }}" step="1" list="tickmarks">
+
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+      <div class="result">{{ result }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
